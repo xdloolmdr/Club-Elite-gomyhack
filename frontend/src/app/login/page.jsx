@@ -1,4 +1,4 @@
-
+"use client";
 import EliteClubLanding from "../landingPage/page";
 
 function ExternalPage() {

@@ -12,7 +12,7 @@ export default function Home() {
         height={1080}
       />
       <p></p>
-      <Link href="/login" className="btn btn-link">
+      <Link href="/login" className="btn btn-link absolute bottom-0 left-1/2 -translate-x-1/2">
         Go To Dashboard
       </Link>
     </div>
