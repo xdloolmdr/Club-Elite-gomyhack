@@ -47,6 +47,11 @@ const playerSchema = new mongoose.Schema({
     redCards: {
         type: Number,
         default: 0
+    },
+    nationality: {
+        type: String,
+        required: true,
+        trim: true
     }
 }, {
     timestamps: true
