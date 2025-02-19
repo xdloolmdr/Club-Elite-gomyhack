@@ -1,9 +1,10 @@
-import Login from "@/components/Login";
+
+import EliteClubLanding from "../landingPage/page";
 
 function ExternalPage() {
   return (
     <div className="">
-      <Login />
+      <EliteClubLanding />
     </div>
   );
 }
