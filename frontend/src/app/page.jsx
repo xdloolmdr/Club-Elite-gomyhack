@@ -1,13 +1,9 @@
-import { Button } from "@/components/button";
-import { Input } from "@/components/input";
-import { Card, CardContent } from "@/components/card";
 
 
-
-export default function Home() {
+export default function page() {
   return (
-  <h1>hello</h1>
-  );
-};
-
-export default EliteClubLanding;
+    <div>
+      hello
+    </div>
+  )
+}
