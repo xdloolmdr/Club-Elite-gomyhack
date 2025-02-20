@@ -45,7 +45,7 @@ const routes = [
     {
         path: "/app/integration", // url
         icon: <BoltIcon className={iconClasses} />, // icon component
-        name: "players", // name that appear in Sidebar
+        name: "Players", // name that appear in Sidebar
     },
     {
         path: "/app/calendar", // url
