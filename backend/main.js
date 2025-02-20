@@ -1,9 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const authRoutes = require("./routes/authRoutes");
-const playerRoutes = require("./routes/playerRoutes");
-const teamMemberRoutes = require("./routes/teamMemberRoutes");
 
 const authRoutes = require("./routes/authRoutes");
 const playerRoutes = require("./routes/playerRoutes");

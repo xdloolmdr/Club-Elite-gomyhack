@@ -16,5 +16,5 @@ export async function register({ email, password, firstName, lastName }) {
 }
 
 export async function checkUser() {
-    return await myAPIConfig.get("/auth");
+    return await myAPIConfig.get("/account");
 }

@@ -66,8 +66,8 @@ function Leads() {
                             <tr>
                                 <th>Name</th>
                                 <th>age</th>
+                                <th>Created At </th>
                                 <th>position</th>
-                                <th>Created At</th>
                                 <th>Assigned To</th>
                                 <th></th>
                             </tr>
@@ -84,9 +84,11 @@ function Leads() {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold">{l.first_name}</div>
+                                                    <div className="font-bold">
+                                                        {l.Name.first_name}
+                                                    </div>
                                                     <div className="text-sm opacity-50">
-                                                        {l.last_name}
+                                                        {l.Name.last_name}
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,7 +100,7 @@ function Leads() {
                                                 .format("DD MMM YY")}
                                         </td>
                                         <td>{getDummyStatus(k)}</td>
-                                        <td>{l.last_name}</td>
+                                        <td>{l.Name.last_name}</td>
                                         <td>
                                             <button
                                                 className="btn btn-square btn-ghost"

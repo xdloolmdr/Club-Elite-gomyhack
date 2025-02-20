@@ -14,7 +14,7 @@ export default function Authenticator({ children }) {
     const { setUser } = useUser();
     useEffect(() => {
         if (response) {
-            setUser(response.data.data);
+            setUser(response.data);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [response]);
