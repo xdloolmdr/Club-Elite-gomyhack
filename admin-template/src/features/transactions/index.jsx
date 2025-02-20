@@ -1,9 +1,6 @@
 import moment from "moment"
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { showNotification } from "../common/headerSlice"
 import TitleCard from "../../components/Cards/TitleCard"
-import { RECENT_TRANSACTIONS } from "../../utils/dummyData"
 import FunnelIcon from '@heroicons/react/24/outline/FunnelIcon'
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
 import SearchBar from "../../components/Input/SearchBar"
@@ -56,21 +53,43 @@ const TopSideButtons = ({removeFilter, applyFilter, applySearch}) => {
 
 function Transactions(){
 
+    const generateRandomTransactions = (num) => {
+        const locations = ["Paris", "London", "Canada", "Peru", "Tokyo"];
+        const names = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown", "Charlie Davis"];
+        const emails = ["john@example.com", "jane@example.com", "alice@example.com", "bob@example.com", "charlie@example.com"];
+        const avatars = [
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg",
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg",
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg",
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg4",
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+        ];
 
-    const [trans, setTrans] = useState(RECENT_TRANSACTIONS)
+        return Array.from({ length: num }, (_, i) => ({
+            id: i + 1,
+            name: names[Math.floor(Math.random() * names.length)],
+            email: emails[Math.floor(Math.random() * emails.length)],
+            location: locations[Math.floor(Math.random() * locations.length)],
+            amount: Math.floor(Math.random() * 1000) + 1,
+            date: moment().subtract(Math.floor(Math.random() * 30), 'days').toDate(),
+            avatar: avatars[Math.floor(Math.random() * avatars.length)]
+        }));
+    }
+
+    const [trans, setTrans] = useState(generateRandomTransactions(10))
 
     const removeFilter = () => {
-        setTrans(RECENT_TRANSACTIONS)
+        setTrans(generateRandomTransactions(10))
     }
 
     const applyFilter = (params) => {
-        let filteredTransactions = RECENT_TRANSACTIONS.filter((t) => {return t.location == params})
+        let filteredTransactions = trans.filter((t) => {return t.location == params})
         setTrans(filteredTransactions)
     }
 
     // Search according to name
     const applySearch = (value) => {
-        let filteredTransactions = RECENT_TRANSACTIONS.filter((t) => {return t.email.toLowerCase().includes(value.toLowerCase()) ||  t.email.toLowerCase().includes(value.toLowerCase())})
+        let filteredTransactions = trans.filter((t) => {return t.email.toLowerCase().includes(value.toLowerCase()) ||  t.name.toLowerCase().includes(value.toLowerCase())})
         setTrans(filteredTransactions)
     }
 
