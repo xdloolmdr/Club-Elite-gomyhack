@@ -28,7 +28,7 @@ function LeftSidebar() {
                             src="/logo192.png"
                             alt="DashWind Logo"
                         />
-                        DashWind
+                        
                     </Link>{" "}
                 </li>
                 {routes.map((route, k) => {
