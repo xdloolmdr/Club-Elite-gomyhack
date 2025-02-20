@@ -30,7 +30,7 @@ const routes = [
     {
         path: "/app/leads", // url
         icon: <InboxArrowDownIcon className={iconClasses} />, // icon component
-        name: "Leads", // name that appear in Sidebar
+        name: "contract", // name that appear in Sidebar
     },
     {
         path: "/app/transactions", // url
@@ -45,7 +45,7 @@ const routes = [
     {
         path: "/app/integration", // url
         icon: <BoltIcon className={iconClasses} />, // icon component
-        name: "Integration", // name that appear in Sidebar
+        name: "players", // name that appear in Sidebar
     },
     {
         path: "/app/calendar", // url

@@ -65,9 +65,9 @@ function Leads() {
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email Id</th>
-                                <th>Created At</th>
-                                <th>Status</th>
+                                <th>age</th>
+                                <th>Created At </th>
+                                <th>position</th>
                                 <th>Assigned To</th>
                                 <th></th>
                             </tr>
@@ -84,21 +84,23 @@ function Leads() {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold">{l.first_name}</div>
+                                                    <div className="font-bold">
+                                                        {l.Name.first_name}
+                                                    </div>
                                                     <div className="text-sm opacity-50">
-                                                        {l.last_name}
+                                                        {l.Name.last_name}
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{l.email}</td>
+                                        <td>{l.age}</td>
                                         <td>
                                             {moment(new Date())
                                                 .add(-5 * (k + 2), "days")
                                                 .format("DD MMM YY")}
                                         </td>
                                         <td>{getDummyStatus(k)}</td>
-                                        <td>{l.last_name}</td>
+                                        <td>{l.Name.last_name}</td>
                                         <td>
                                             <button
                                                 className="btn btn-square btn-ghost"

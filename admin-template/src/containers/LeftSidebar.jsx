@@ -28,6 +28,7 @@ function LeftSidebar() {
                             src="/logo192.png"
                             alt="DashWind Logo"
                         />
+                        CLUB-ELITE
                         
                     </Link>{" "}
                 </li>
