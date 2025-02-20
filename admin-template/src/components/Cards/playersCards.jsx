@@ -5,7 +5,7 @@ const PlayerCard = ({ player }) => {
     return (
         <div className="max-w-xs rounded-2xl border border-gray-700 bg-gray-900 p-6 text-center text-white shadow-lg">
             <img
-                src={player.image || "/default-player.png"}
+                src={"/Mbappe.jpeg"}
                 alt={player.name}
                 className="mx-auto mb-4 h-24 w-24 rounded-full border-2 border-blue-500"
             />
