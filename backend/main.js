@@ -4,6 +4,12 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const playerRoutes = require("./routes/playerRoutes");
 const teamMemberRoutes = require("./routes/teamMemberRoutes");
+
+const authRoutes = require("./routes/authRoutes");
+const playerRoutes = require("./routes/playerRoutes");
+const teamMemberRoutes = require("./routes/teamMemberRoutes");
+const contractRoutes = require("./routes/contractRoutes");
+
 require("dotenv").config();
 
 const app = express();
@@ -23,6 +29,11 @@ app.use(express.json());
 app.use(authRoutes);
 app.use(playerRoutes);
 app.use(teamMemberRoutes);
+
+app.use(authRoutes);
+app.use(playerRoutes);
+app.use(teamMemberRoutes);
+app.use(contractRoutes);
 
 // Connect to MongoDB
 mongoose

@@ -12,7 +12,8 @@ const createPlayerValidation = Joi.object({
     goals: Joi.number().default(0),
     assists: Joi.number().default(0),
     yellowCards: Joi.number().default(0),
-    redCards: Joi.number().default(0)
+    redCards: Joi.number().default(0),
+    nationality: Joi.string().required().trim()
 });
 
 // Define the validation schema for updating a player
@@ -27,7 +28,8 @@ const updatePlayerValidation = Joi.object({
     goals: Joi.number(),
     assists: Joi.number(),
     yellowCards: Joi.number(),
-    redCards: Joi.number()
+    redCards: Joi.number(),
+    nationality: Joi.string().trim()
 }).min(1); // Ensure that at least one field is being updated
 
 module.exports = {
