@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+
 const authRoutes = require("./routes/authRoutes");
 const playerRoutes = require("./routes/playerRoutes");
 const teamMemberRoutes = require("./routes/teamMemberRoutes");
@@ -23,9 +24,7 @@ app.use(
 );
 app.use(express.json());
 
-app.use(authRoutes);
-app.use(playerRoutes);
-app.use(teamMemberRoutes);
+
 
 app.use(authRoutes);
 app.use(playerRoutes);

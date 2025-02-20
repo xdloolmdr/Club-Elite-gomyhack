@@ -7,7 +7,7 @@ const INITIAL_LEAD_OBJ = {
     first_name: "",
     last_name: "",
     age: "",
-    Position: "",
+    position: "",
 };
 
 function AddLeadModalBody({ closeModal }) {

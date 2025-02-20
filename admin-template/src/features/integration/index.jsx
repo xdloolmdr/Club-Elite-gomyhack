@@ -1,8 +1,45 @@
-import { useState } from "react";
-import TitleCard from "../../components/Cards/TitleCard";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const PlayerCard = ({ player }) => {
+  return (
+    <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-lg p-6 text-white max-w-xs text-center">
+      <img
+        src={player.image || "/default-player.png"}
+        alt={player.name}
+        className="w-24 h-24 mx-auto rounded-full border-2 border-blue-500 mb-4"
+      />
+      <h2 className="text-lg font-bold text-blue-400">{player.name}</h2>
+      <p className="text-gray-300 text-sm">{player.position}</p>
+      <div className="mt-4 bg-gray-800 p-3 rounded-lg">
+        <p className="text-xs text-gray-400">Performance Stats</p>
+        <div className="flex justify-between text-sm font-semibold mt-2">
+          <p>⚽ Goals: <span className="text-green-400">{player.goals}</span></p>
+          <p>🎯 Assists: <span className="text-blue-400">{player.assists}</span></p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 function Player() {
     const [playerList, setPlayersList] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPlayers = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/players');
+                setPlayersList(response.data);
+            } catch (error) {
+                console.error('Failed to fetch players:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPlayers();
+    }, []);
 
     const updateplayers = (index) => {
         setPlayersList(
@@ -13,31 +50,16 @@ function Player() {
         );
     };
 
+    if (loading) {
+        return <p>Loading players...</p>;
+    }
+
     return (
         <>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                {playerList.map((i, k) => {
-                    return (
-                        <TitleCard key={k} title={i.name} topMargin={"mt-2"}>
-                            <p className="flex">
-                                <img
-                                    alt="icon"
-                                    src={i.icon}
-                                    className="mr-4 inline-block h-12 w-12"
-                                />
-                                {i.description}
-                            </p>
-                            <div className="mt-6 text-right">
-                                <input
-                                    type="checkbox"
-                                    className="toggle toggle-success toggle-lg"
-                                    checked={i.isActive}
-                                    onChange={() => updateplayers(k)}
-                                />
-                            </div>
-                        </TitleCard>
-                    );
-                })}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+                {playerList.map((player, k) => (
+                    <PlayerCard key={k} player={player} />
+                ))}
             </div>
         </>
     );

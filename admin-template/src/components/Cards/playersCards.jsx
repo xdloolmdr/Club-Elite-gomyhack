@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const PlayerCard = ({ player }) => {
   return (
@@ -10,27 +11,47 @@ const PlayerCard = ({ player }) => {
       />
       <h2 className="text-lg font-bold text-blue-400">{player.name}</h2>
       <p className="text-gray-300 text-sm">{player.position}</p>
-      <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-400">
-        <p><span className="font-semibold text-white">Age:</span> {player.age}</p>
-        <p><span className="font-semibold text-white">Height:</span> {player.height} cm</p>
-        <p><span className="font-semibold text-white">Weight:</span> {player.weight} kg</p>
-        <p><span className="font-semibold text-white">Strong Foot:</span> {player.strongFoot}</p>
-        <p><span className="font-semibold text-white">Nationality:</span> {player.nationality}</p>
-      </div>
       <div className="mt-4 bg-gray-800 p-3 rounded-lg">
         <p className="text-xs text-gray-400">Performance Stats</p>
         <div className="flex justify-between text-sm font-semibold mt-2">
           <p>⚽ Goals: <span className="text-green-400">{player.goals}</span></p>
           <p>🎯 Assists: <span className="text-blue-400">{player.assists}</span></p>
         </div>
-        <div className="flex justify-between text-sm font-semibold mt-2">
-          <p>🟨 Yellow: <span className="text-yellow-400">{player.yellowCards}</span></p>
-          <p>🟥 Red: <span className="text-red-500">{player.redCards}</span></p>
-        </div>
       </div>
-      <p className="mt-3 text-xs text-gray-400">Form: <span className="text-green-400 font-semibold">{player.form}</span></p>
     </div>
   );
 };
 
-export default PlayerCard;
+const PlayerGrid = () => {
+  const [players, setPlayers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/players');
+        setPlayers(response.data);
+      } catch (error) {
+        console.error('Failed to fetch players:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlayers();
+  }, []);
+
+  if (loading) {
+    return <p>Loading players...</p>;
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+      {players.map((player) => (
+        <PlayerCard key={player.id} player={player} />
+      ))}
+    </div>
+  );
+};
+
+export default PlayerGrid;
