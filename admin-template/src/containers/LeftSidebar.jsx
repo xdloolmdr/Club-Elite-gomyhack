@@ -28,7 +28,8 @@ function LeftSidebar() {
                             src="/logo192.png"
                             alt="DashWind Logo"
                         />
-                        CLUB-ELIT
+                        CLUB-ELITE
+                        
                     </Link>{" "}
                 </li>
                 {routes.map((route, k) => {
