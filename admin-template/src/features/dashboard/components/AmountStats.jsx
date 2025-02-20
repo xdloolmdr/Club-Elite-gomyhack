@@ -7,7 +7,7 @@ function AmountStats(){
                 <div className="stat-title">revenue</div>
                 <div className="stat-value">$25,600</div>
                 <div className="stat-actions">
-                    <button className="btn btn-xs">View Users</button> 
+                    <button className="btn btn-xs">View Players</button> 
                 </div>
             </div>
             

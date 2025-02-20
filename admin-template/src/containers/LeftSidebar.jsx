@@ -24,11 +24,10 @@ function LeftSidebar() {
                 <li className="mb-2 text-xl font-semibold">
                     <Link to={"/app/welcome"}>
                         <img
-                            className="mask mask-squircle w-10"
-                            src="/logo192.png"
+                            className="w-full object-contain h-16 ml-4"
+                            src="/logo2.png"
                             alt="DashWind Logo"
                         />
-                        CLUB-ELITE
                         
                     </Link>{" "}
                 </li>

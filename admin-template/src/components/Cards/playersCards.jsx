@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const PlayerCard = ({ player }) => {
   return (
     <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-lg p-6 text-white max-w-xs text-center">
       <img
-        src={player.image || "/default-player.png"}
+        src={"/Mbappe.jpeg"}
         alt={player.name}
         className="w-24 h-24 mx-auto rounded-full border-2 border-blue-500 mb-4"
       />
