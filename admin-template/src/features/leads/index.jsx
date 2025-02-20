@@ -65,9 +65,9 @@ function Leads() {
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email Id</th>
+                                <th>age</th>
+                                <th>position</th>
                                 <th>Created At</th>
-                                <th>Status</th>
                                 <th>Assigned To</th>
                                 <th></th>
                             </tr>
@@ -91,7 +91,7 @@ function Leads() {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{l.email}</td>
+                                        <td>{l.age}</td>
                                         <td>
                                             {moment(new Date())
                                                 .add(-5 * (k + 2), "days")

@@ -4,11 +4,11 @@ import InputText from '../../../components/Input/InputText'
 import ErrorText from '../../../components/Typography/ErrorText'
 import { showNotification } from "../../common/headerSlice"
 import { addNewLead } from "../leadSlice"
-
+const Name = {first_Name:"",last_Name:""}
 const INITIAL_LEAD_OBJ = {
-    first_name : "",
-    last_name : "",
-    email : ""
+    Name,
+    age : "",
+    Position:"",
 }
 
 function AddLeadModalBody({closeModal}){
@@ -19,15 +19,16 @@ function AddLeadModalBody({closeModal}){
 
 
     const saveNewLead = () => {
-        if(leadObj.first_name.trim() === "")return setErrorMessage("First Name is required!")
-        else if(leadObj.email.trim() === "")return setErrorMessage("Email id is required!")
+        if(leadObj.Name.trim() === "")return setErrorMessage("Name is required!")
+        else if(leadObj.age.trim() === "")return setErrorMessage("age is required!")
+        else if(leadObj.position.trim() === "")return setErrorMessage("positionis required!")
+    
         else{
             let newLeadObj = {
                 "id": 7,
-                "email": leadObj.email,
-                "first_name": leadObj.first_name,
-                "last_name": leadObj.last_name,
-                "avatar": "https://reqres.in/img/faces/1-image.jpg"
+                "age": leadObj.age,
+                "first_name": leadObj.Name.first_Name,
+                "last_name": leadObj.Name.last_name,
             }
             dispatch(addNewLead({newLeadObj}))
             dispatch(showNotification({message : "New Lead Added!", status : 1}))
@@ -43,17 +44,19 @@ function AddLeadModalBody({closeModal}){
     return(
         <>
 
-            <InputText type="text" defaultValue={leadObj.first_name} updateType="first_name" containerStyle="mt-4" labelTitle="First Name" updateFormValue={updateFormValue}/>
+            <InputText type="text" defaultValue={leadObj.Name.first_Name} updateType="first_name" containerStyle="mt-4" labelTitle="First Name" updateFormValue={updateFormValue}/>
 
-            <InputText type="text" defaultValue={leadObj.last_name} updateType="last_name" containerStyle="mt-4" labelTitle="Last Name" updateFormValue={updateFormValue}/>
+            <InputText type="text" defaultValue={leadObj.Name.last_Name} updateType="last_name" containerStyle="mt-4" labelTitle="Last Name" updateFormValue={updateFormValue}/>
 
-            <InputText type="email" defaultValue={leadObj.email} updateType="email" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue}/>
+            <InputText type="email" defaultValue={leadObj.age} updateType="age" containerStyle="mt-4" labelTitle="age" updateFormValue={updateFormValue}/>
+            <InputText type="text" defaultValue={leadObj.position} updateType="position" containerStyle="mt-4" labelTitle="position" updateFormValue={updateFormValue}/>
 
 
             <ErrorText styleClass="mt-16">{errorMessage}</ErrorText>
             <div className="modal-action">
                 <button  className="btn btn-ghost" onClick={() => closeModal()}>Cancel</button>
-                <button  className="btn btn-primary px-6" onClick={() => saveNewLead()}>Save</button>
+                <button  className="btn btn-primary px-6" onClick={() => saveNewLead(
+                )}>Save</button>
             </div>
         </>
     )
